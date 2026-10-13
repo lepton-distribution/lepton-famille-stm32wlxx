@@ -1,0 +1,64 @@
+{
+  "nom": "stm32wlxx",
+  "type": "famille",
+  "version": "1.0.0",
+  "description": "Famille STM32WL : couche Lepton (dev_stm32wlxx : UART, interface radio, base de temps), HAL ST STM32CubeWL V1.3.0 (cubemx_hal_driver), pile radio SubGHz_Phy 1.3.0 et utilitaires ST, CMSIS device ST, table de vecteurs du STM32WL55 (CPU1, Cortex-M4). L'adaptation radio de la carte (stm32_radio_target) est dans le BSP ; les fichiers non listés ne sont pas compilés.",
+  "destination": "kernel/dev/arch/cortexm/stm32wlxx",
+  "bibliotheque": "kernel",
+  "sources": [
+    "dev_stm32wlxx/dev_stm32wlxx_uart_x.c",
+    "dev_stm32wlxx/dev_stm32wlxx_bsp_radio_if.c",
+    "dev_stm32wlxx/dev_stm32wlxx_util_timer.c",
+    "radio_subghz_phy/stm32_radio_driver/radio.c",
+    "radio_subghz_phy/stm32_radio_driver/radio_driver.c",
+    "radio_subghz_phy/stm32_radio_driver/radio_fw.c",
+    "radio_subghz_phy/stm32_radio_driver/lr_fhss_mac.c",
+    "radio_subghz_phy/stm32_radio_driver/wl_lr_fhss.c",
+    "Utilities/misc/stm32_mem.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_cortex.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_gpio.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_rcc.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_rcc_ex.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_pwr.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_pwr_ex.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_dma.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_dma_ex.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_uart.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_uart_ex.c",
+    "cubemx_hal_driver/src/stm32wlxx_hal_subghz.c"
+  ],
+  "dependances": [
+    "lepton-noyau"
+  ],
+  "coeurs": [
+    "cortex-m4f"
+  ],
+  "mcu": [
+    "STM32WL55xx"
+  ],
+  "vecteurs": [
+    "vecteurs/stm32wl55xx_vectors.c"
+  ],
+  "remplacants_forts": [
+    "dev_stm32wlxx/dev_stm32wlxx_hal_tick.c"
+  ],
+  "compilation": {
+    "publique": {
+      "definitions": [
+        "USE_HAL_DRIVER"
+      ],
+      "inclusions": [
+        "kernel/dev/arch/cortexm/stm32wlxx/dev_stm32wlxx",
+        "kernel/dev/arch/cortexm/stm32wlxx/cubemx_hal_driver/inc",
+        "kernel/core/ucore/cmsis/Device/st/stm32wlxx",
+        "kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy",
+        "kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver",
+        "kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_core_inc",
+        "kernel/dev/arch/cortexm/stm32wlxx/Utilities/timer",
+        "kernel/dev/arch/cortexm/stm32wlxx/Utilities/misc",
+        "kernel/dev/arch/cortexm/stm32wlxx/Utilities/trace/adv_trace"
+      ]
+    }
+  }
+}
