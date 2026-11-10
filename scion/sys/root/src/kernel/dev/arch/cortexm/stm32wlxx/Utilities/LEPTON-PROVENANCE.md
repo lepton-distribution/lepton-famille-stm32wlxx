@@ -1,28 +1,38 @@
-# Provenance (chantier environnement de développement Lepton, ENV-37)
+# Provenance (chantier environnement de développement Lepton, ENV-37, ENV-48)
 
-Utilitaires ST de STM32CubeWL. Révision retenue : `STM32CubeWL` commit
-`378e461e469ef9826e857f8eda3346cea525b2fa` (tag `v1.3.0`,
-https://github.com/STMicroelectronics/STM32CubeWL), sous-arbre `Utilities/`. Seul amont connu des
-révisions copiées : `stm32-util-sequencer` et `stm32-util-advanced-trace` n'existent qu'en
-versions 2.x réécrites. STM32CubeWL est admis comme source de cet ensemble, par exception étroite
-à la décision du 2026-11-04 (décision PA-61, 2026-11-06). BSD-3-Clause ST (`LICENSE.md` de chaque
-sous-répertoire amont, non repris). Importés sans provenance en migration, puis par ENV-6 ;
-audités en ENV-37 (`doc/devenv/rapports/env-37-wl-provenance.md` du dépôt lepton-tools).
+Utilitaires ST de STM32CubeWL : `STM32CubeWL` tag `v1.3.0` = commit
+`378e461e469ef9826e857f8eda3346cea525b2fa` (amont https://github.com/STMicroelectronics/STM32CubeWL),
+sous-arbre `Utilities/`. Seul amont connu des révisions utilisées : `stm32-util-sequencer` et
+`stm32-util-advanced-trace` n'existent qu'en versions 2.x réécrites. STM32CubeWL est admis comme
+source de cet ensemble, par exception étroite à la décision du 2026-11-04 (décision PA-61,
+2026-11-06). BSD-3-Clause ST (`LICENSE.md` des sous-répertoires amont qui en ont un).
 
-Correspondance des chemins : `Utilities/<d>/` → `<d>/`, sans renommage, pour `conf`, `Fonts`,
-`lcd`, `lpm/tiny_lpm`, `misc`, `sequencer`, `timer`, `trace/adv_trace`.
+Depuis ENV-48, ce répertoire n'est plus une copie : scion **projette** les fichiers de STM32CubeWL
+(clé `tiers@stm32cubewl::utilities`, déclarée dans `scion/.scion/` de ce greffon, qui la porte).
+Source : miroir de conservation complet https://github.com/lepton-distribution/mirror-STM32CubeWL.git
+(tenu par `scion mirror-sync`) ; clone partiel sous `<rootstock>/depots/tiers/stm32cubewl/v1.3.0`,
+au commit du tag, partagé avec `tiers@stm32cubewl::radio-core-inc` (`radio_subghz_phy/`). Le clone
+extrait tout l'arbre de `v1.3.0` (17 937 fichiers, environ 360 Mo) : scion n'a pas d'extraction
+partielle. Fichiers projetés :
+- `Utilities/<d>/*.[ch]` → `<d>/` pour `conf`, `Fonts`, `lcd`, `lpm/tiny_lpm`, `misc`,
+  `sequencer`, `timer`, `trace/adv_trace` (32 fichiers) ;
+- `Utilities/<d>/LICENSE.md` → `<d>/` pour `conf`, `lpm/tiny_lpm`, `misc`, `sequencer`, `timer`,
+  `trace/adv_trace` (6 fichiers, ajoutés en ENV-48, décision C2, PA-83).
+Non projetés : notes de version, `_htmresc/`, `sequencer/html/`, `PC_Software/`.
 
-Écarts à la règle D1a (code tiers non modifié), laissés en place (décision PA-61, 2026-11-06) :
+Restent dans le greffon, exclus de la projection :
 - `timer/stm32_timer.h` : **modifié par Lepton** (`#include <cmsis_compiler.h>` mis en
-  commentaire, « lepton removed ») ; inclus.
-- `LICENSE.txt` dans `conf/`, `lpm/tiny_lpm/`, `misc/`, `sequencer/`, `timer/`,
-  `trace/adv_trace/` : hors amont (avis court ST renvoyant à BSD-3-Clause, origine non établie).
-- Non repris : `LICENSE.md`, notes de version, `_htmresc/`, `sequencer/html/`, `PC_Software/`.
+  commentaire, « lepton removed ») ; inclus (écart à D1a, décision PA-61) ;
+- ce fichier.
+`LICENSE.txt` ×6 (avis court ST hors amont, origine probable : génération STM32CubeMX) : retirés
+en ENV-48 (décision C2, PA-83).
 
-Compilé : `misc/stm32_mem.c` (`sources` de `lepton-greffon.json`) ; inclus :
+Compilé : `misc/stm32_mem.c` (`sources` de `lepton-greffon.json`, résolu par le trunk) ; inclus :
 `misc/stm32_mem.h`, `misc/stm32_tiny_vsnprintf.h`, `timer/stm32_timer.h`,
-`trace/adv_trace/stm32_adv_trace.h`.
-Contrôle : copie de travail remise aux chemins amont
-(`doc/devenv/rapports/env-37-wl-provenance/preparer-copies.sh`), puis
-`scripts/tiers/verifier-import.sh <clone STM32CubeWL> v1.3.0 <copie>/cube-util` : 32 identiques,
-1 `DIFF` (`stm32_timer.h`), 6 `TROP` (`LICENSE.txt`).
+`trace/adv_trace/stm32_adv_trace.h`. `timer/stm32_timer.c` n'est pas compilé
+(`dev_stm32wlxx/dev_stm32wlxx_util_timer.c` fournit les deux fonctions de temps de la pile radio).
+Contenu projeté : identique à `v1.3.0` par construction. Exige scion ≥ 0.6.1.0.
+Mise à jour : changer la version de la clé `stm32cubewl::utilities` et celle de
+`stm32cubewl::radio-core-inc` ensemble (même clone), reporter `timer/stm32_timer.h`, puis regreffer.
+Audit : `doc/devenv/rapports/env-37-wl-provenance.md` et `env-48-wl-projection.md` du dépôt
+lepton-tools.
