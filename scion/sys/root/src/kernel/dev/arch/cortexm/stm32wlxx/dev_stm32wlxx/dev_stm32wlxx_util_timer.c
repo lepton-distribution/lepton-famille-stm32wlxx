@@ -1,12 +1,12 @@
 /*
  * Lepton — base de temps des utilitaires STM32CubeWL pour la pile radio (famille STM32WLxx,
  * étape 6). Licence : voir LICENSE (MPL 1.1).
- *
- * SubGHz_Phy (radio.c, écoute avant émission) mesure des durées en millisecondes par
- * TimerGetCurrentTime / TimerGetElapsedTime, ramenés par stm32_radio_target/timer.h à
- * UTIL_TIMER_GetCurrentTime / UTIL_TIMER_GetElapsedTime (Utilities/timer/stm32_timer.c, non
- * compilé : serveur de minuteries sur RTC, inutile ici ; les minuteries de la pile sont neutralisées
- * par timer.h). Seules ces deux fonctions sont fournies, sur le tick du noyau (comme HAL_GetTick).
+ * UTIL_TIMER_GetCurrentTime / UTIL_TIMER_GetElapsedTime sur le tick du noyau (comme HAL_GetTick) :
+ * cibles de TimerGetCurrentTime / TimerGetElapsedTime (stm32_radio_target/timer.h, qui neutralise
+ * les minuteries de la pile) ; Utilities/timer/stm32_timer.c (serveur sur RTC) n'est pas compilé.
+ * Seul utilisateur : RadioIsChannelFree (radio.c, écoute avant émission), dont le corps est sous
+ * #if 0 depuis l'import de 2024 et qu'aucun code de Lepton n'appelle : ces deux fonctions ne sont
+ * donc pas liées dans l'exécutable (ENV-48 ; radio_subghz_phy/LEPTON-PROVENANCE.md).
  */
 #include <stdint.h>
 
