@@ -1,28 +1,35 @@
-# Provenance (chantier environnement de développement Lepton, ENV-37)
+# Provenance (chantier environnement de développement Lepton, ENV-37, ENV-48)
 
-HAL STM32WL V1.3.0. Révision retenue : `stm32wlxx-hal-driver` commit
-`e3966ab429c1711e5dd2b40918e1d987eed7a249` (tag `v1.3.0`,
-https://github.com/STMicroelectronics/stm32wlxx-hal-driver), BSD-3-Clause (`LICENSE.md` de
-l'amont). Copie identique à `Drivers/STM32WLxx_HAL_Driver` de STM32CubeWL `v1.3.0` (commit
-`378e461e469ef9826e857f8eda3346cea525b2fa`, où la HAL est un arbre et non un sous-module).
-Importée sans provenance en migration, puis par ENV-6 (commit 8ea1490 de ce greffon) ; auditée en
-ENV-37 (`doc/devenv/rapports/env-37-wl-provenance.md` du dépôt lepton-tools).
+HAL STM32WL V1.3.0 : `stm32wlxx-hal-driver` tag `v1.3.0` = commit
+`e3966ab429c1711e5dd2b40918e1d987eed7a249` (amont
+https://github.com/STMicroelectronics/stm32wlxx-hal-driver), BSD-3-Clause (`LICENSE.md`).
+Identique à `Drivers/STM32WLxx_HAL_Driver` de STM32CubeWL `v1.3.0` (commit
+`378e461e469ef9826e857f8eda3346cea525b2fa`, où la HAL est un arbre et non un sous-module), sauf
+`stm32_hal_legacy.h` (ci-dessous). Code tiers non modifié (D1a).
 
-Correspondance des chemins (amont → ce répertoire) : `Inc/` → `inc/`, `Src/` → `src/` (casse des
-répertoires modifiée), `README.md` et `Release_Notes.html` → racine. `inc/` et `src/` complets,
-non modifiés (code tiers, D1a). Configuration (`stm32wlxx_hal_conf.h`) dans `dev_stm32wlxx/` de la
-famille.
+Depuis ENV-48, ce répertoire n'est plus une copie : scion **projette** les fichiers du dépôt tiers
+(clé `tiers@stm32wlxx-hal-driver`, déclarée dans `scion/.scion/` de ce greffon, qui la porte).
+Source : miroir de conservation https://github.com/lepton-distribution/mirror-stm32wlxx-hal-driver.git
+(tenu par `scion mirror-sync`, `scion/.scion/.scion.mirrors`) ; clone partiel sous
+`<rootstock>/depots/tiers/stm32wlxx-hal-driver/v1.3.0`, au commit du tag. Fichiers projetés :
+`Inc/**` → `inc/`, `Src/**` → `src/` (la projection change la casse des répertoires),
+`README.md`, `Release_Notes.html` et `LICENSE.md` → racine (156 fichiers) ; `_htmresc/`,
+`.github/` et fichiers de contribution non projetés. Configuration (`stm32wlxx_hal_conf.h`) dans
+`dev_stm32wlxx/` de la famille.
 
-Écarts constatés à la révision retenue :
+Restent dans le greffon, exclus de la projection :
 - `inc/Legacy/stm32_hal_legacy.h` : version de STM32CubeWL `v1.3.0`
   (`#if defined(STM32U5) || defined(STM32MP2)`), différente de celle du tag `v1.3.0` du dépôt
-  séparé (`#if defined(STM32U5)`).
-- `LICENSE.txt` : hors amont (avis court ST renvoyant à BSD-3-Clause, origine non établie) ;
-  `LICENSE.md` de l'amont non repris.
-- Non repris : `_htmresc/`, `.github/`, fichiers de contribution.
+  séparé (`#if defined(STM32U5)`) ; copie conservée, une clé n'ayant qu'une révision ;
+- ce fichier.
+`LICENSE.txt` (avis court ST hors amont, origine probable : génération STM32CubeMX) : retiré en
+ENV-48 (décision C2, PA-83), remplacé par le `LICENSE.md` projeté.
 
-Compilés : les 12 `src/*.c` listés dans `sources` de `lepton-greffon.json`.
-Contrôle : copie de travail remise aux chemins amont
-(`doc/devenv/rapports/env-37-wl-provenance/preparer-copies.sh`), puis
-`scripts/tiers/verifier-import.sh <clone> v1.3.0 <copie>/hal` : 155 identiques, 1 `DIFF`
-(`stm32_hal_legacy.h`), 1 `TROP` (`LICENSE.txt`).
+Compilés : les 12 `src/*.c` listés dans `sources` de `lepton-greffon.json`, résolus par le trunk.
+Contenu : identique à `v1.3.0` par construction (liens vers le clone tiers, que la greffe refuse
+hors de son commit épinglé ou modifié). Exige scion ≥ 0.6.1.0.
+Mise à jour : changer la version de la clé dans `scion/.scion/` (`.scion.sources.list`,
+`.scion.ramifications`), avec le CMSIS device et la pile radio du même STM32CubeWL, reporter
+`stm32_hal_legacy.h`, puis regreffer.
+Audit : `doc/devenv/rapports/env-37-wl-provenance.md` et `env-48-wl-projection.md` du dépôt
+lepton-tools.
