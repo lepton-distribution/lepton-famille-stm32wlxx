@@ -2,7 +2,7 @@
   "nom": "stm32wlxx",
   "type": "famille",
   "version": "1.0.0",
-  "description": "Famille STM32WL : couche Lepton (dev_stm32wlxx : UART, interface radio, base de temps), table de vecteurs du STM32WL55 (CPU1, Cortex-M4) ; HAL ST V1.3.0 (cubemx_hal_driver), CMSIS device ST V1.1.1, pile radio SubGHz_Phy 1.3.0 et utilitaires ST de STM32CubeWL V1.3.0, projetés par scion depuis les miroirs lepton-distribution/mirror-* (scion/.scion/, scion >= 0.6.1.0), provenance dans LEPTON-PROVENANCE.md ; restent dans le greffon les fichiers modifiés par Lepton (radio.c, stm32_timer.h, 3 fichiers de stm32_radio_core_inc) et stm32_hal_legacy.h. L'adaptation radio de la carte (stm32_radio_target) est dans le BSP ; seuls les fichiers listés dans sources sont compilés.",
+  "description": "Famille STM32WL : couche Lepton (dev_stm32wlxx : UART, interface radio, base de temps), table de vecteurs du STM32WL55 (CPU1, Cortex-M4) ; HAL ST V1.6.0 (cubemx_hal_driver), CMSIS device ST V1.4.0, pile radio SubGHz_Phy V1.5.0 et utilitaires ST de STM32CubeWL V1.6.0 (couple de STM32CubeWL v1.6.0), projetés par scion depuis les miroirs lepton-distribution/mirror-* (scion/.scion/, scion >= 0.6.1.0), provenance dans LEPTON-PROVENANCE.md ; restent dans le greffon les fichiers modifiés par Lepton (radio.c, stm32_timer.h, 3 fichiers de stm32_radio_core_inc). L'adaptation radio de la carte (stm32_radio_target) est dans le BSP ; seuls les fichiers listés dans sources sont compilés.",
   "destination": "kernel/dev/arch/cortexm/stm32wlxx",
   "bibliotheque": "kernel",
   "sources": [
