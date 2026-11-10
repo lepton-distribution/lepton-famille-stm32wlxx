@@ -3,19 +3,26 @@ tiers  stm32wlxx-hal-driver  Src/**                          scion/sys/root/src/
 tiers  stm32wlxx-hal-driver  README.md                       scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/cubemx_hal_driver/
 tiers  stm32wlxx-hal-driver  Release_Notes.html              scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/cubemx_hal_driver/
 tiers  stm32wlxx-hal-driver  LICENSE.md                      scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/cubemx_hal_driver/
-tiers  stm32wlxx-hal-driver  !Inc/Legacy/stm32_hal_legacy.h
 tiers  cmsis-device-wl  Include/stm32wl55xx.h                           scion/sys/root/src/kernel/core/ucore/cmsis/Device/st/stm32wlxx/
 tiers  cmsis-device-wl  Include/stm32wlxx.h                             scion/sys/root/src/kernel/core/ucore/cmsis/Device/st/stm32wlxx/
 tiers  cmsis-device-wl  Include/system_stm32wlxx.h                      scion/sys/root/src/kernel/core/ucore/cmsis/Device/st/stm32wlxx/
 tiers  cmsis-device-wl  Source/Templates/system_stm32wlxx.c             scion/sys/root/src/kernel/core/ucore/cmsis/Device/st/stm32wlxx/
 tiers  cmsis-device-wl  Source/Templates/iar/startup_stm32wl55xx_cm4.s  scion/sys/root/src/kernel/core/ucore/cmsis/Device/st/stm32wlxx/startup/iar/
 tiers  cmsis-device-wl  LICENSE.md                                      scion/sys/root/src/kernel/core/ucore/cmsis/Device/st/stm32wlxx/
-tiers  stm32-mw-subghz-phy  *.h                     scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
-tiers  stm32-mw-subghz-phy  LICENSE                 scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
-tiers  stm32-mw-subghz-phy  LICENSE.md              scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
-tiers  stm32-mw-subghz-phy  Conf/*                  scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/Conf/
-tiers  stm32-mw-subghz-phy  stm32_radio_driver/*    scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver/
-tiers  stm32-mw-subghz-phy  !stm32_radio_driver/radio.c
+tiers  stm32-mw-subghz-phy  radio_driver/radio.h                  scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
+tiers  stm32-mw-subghz-phy  radio_driver/radio_def.h              scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
+tiers  stm32-mw-subghz-phy  radio_driver/radio_ex.h               scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
+tiers  stm32-mw-subghz-phy  radio_driver/lr_fhss_v1_base_types.h  scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
+tiers  stm32-mw-subghz-phy  LICENSE                               scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
+tiers  stm32-mw-subghz-phy  LICENSE.md                            scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/
+tiers  stm32-mw-subghz-phy  Conf/*                                scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/Conf/
+tiers  stm32-mw-subghz-phy  radio_driver/*.c                      scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver/
+tiers  stm32-mw-subghz-phy  radio_driver/lr_fhss_mac.h            scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver/
+tiers  stm32-mw-subghz-phy  radio_driver/radio_driver.h           scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver/
+tiers  stm32-mw-subghz-phy  radio_driver/radio_fw.h               scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver/
+tiers  stm32-mw-subghz-phy  radio_driver/subghz_phy_version.h     scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver/
+tiers  stm32-mw-subghz-phy  radio_driver/wl_lr_fhss.h             scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/radio_subghz_phy/stm32_radio_driver/
+tiers  stm32-mw-subghz-phy  !radio_driver/radio.c
 tiers  stm32cubewl::utilities  Utilities/conf/*.[ch]             scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/Utilities/conf/
 tiers  stm32cubewl::utilities  Utilities/Fonts/*.[ch]            scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/Utilities/Fonts/
 tiers  stm32cubewl::utilities  Utilities/lcd/*.[ch]              scion/sys/root/src/kernel/dev/arch/cortexm/stm32wlxx/Utilities/lcd/
